@@ -1,0 +1,938 @@
+{
+  "format": 1,
+  "test": "adapter compatibility [golden]: codex and claude adapters (both roles) and implementer and reviewer rounds are unchanged",
+  "baseline": "core with the claude implementer, before provider modules",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {
+    "durationMs": "Pola durationMs (zegar rzeczywisty procesów bramek) mają wartość 0.",
+    "temporaryPaths": "Ścieżki katalogów tymczasowych tworzonych przez test (repozytorium, tempRoot rundy, katalog CLI; także po realpath) są zastąpione znacznikami <repo>, <temp>, <root>.",
+    "guardBin": "Pierwszy element PATH wywołania procesu (katalog guard-bin tworzony przy każdym wywołaniu) ma wartość <guard-bin>.",
+    "activityCallback": "Opcja procesu onActivityChunk (funkcja) jest pominięta."
+  },
+  "entries": {
+    "moduł dostawców": {
+      "header": {
+        "exports": [
+          "CLAUDE_EFFORTS",
+          "CODEX_MODEL",
+          "DEFAULT_IMPLEMENTER",
+          "DEFAULT_REVIEWER",
+          "DEFAULT_REVIEW_PROFILE",
+          "DEFAULT_SOL_EFFORT",
+          "PROVIDERS",
+          "REVIEW_PROFILES",
+          "SOL_EFFORTS",
+          "isValidModelId"
+        ]
+      },
+      "subtrees": {
+        "constants": {
+          "sha256": "cec38c1e0b0f640cf0f81fe66d7e3cf829cf81b93a6846292ce2acdf19b2758a"
+        },
+        "shape": {
+          "sha256": "ee30680325560932b27c97532c9fc8dfea361ae5ea4a44b07f9ba2ae84082546"
+        }
+      }
+    },
+    "claude.implementer.processArgs": {
+      "header": {
+        "count": 12,
+        "first": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)"
+        ]
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "b04356cfc1b388dc777976388f1364a3ed4153bb81db9e563a5509590b906065"
+        }
+      }
+    },
+    "claude.implementer.processEnvironment": {
+      "header": {
+        "count": 1,
+        "outputs": [
+          {
+            "PATH": "/synthetic/guard-bin:/usr/bin",
+            "HOME": "/synthetic/home",
+            "COREPACK_HOME": "/synthetic/corepack",
+            "COREPACK_ENABLE_NETWORK": "0",
+            "NPM_CONFIG_USERCONFIG": "/synthetic/npmrc"
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.implementer.readers": {
+      "header": {
+        "count": 27
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "285d7f66b02c7d458b0765ad4154baa19af64d9a36443584ec3d0a8e3130a7dc"
+        }
+      }
+    },
+    "claude.implementer.preflight": {
+      "header": {
+        "count": 15,
+        "outputs": [
+          {
+            "$undefined": true
+          },
+          {
+            "$undefined": true
+          },
+          "UNSUPPORTED_PLATFORM",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION",
+          "UNSUPPORTED_VERSION"
+        ]
+      },
+      "subtrees": {}
+    },
+    "codex.implementer.processArgs": {
+      "header": {
+        "count": 32,
+        "first": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "/synthetic/repo",
+          "-c",
+          "model_reasoning_effort=\"medium\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "/synthetic/run/codex-output-schema.json",
+          "--json",
+          "-o",
+          "/synthetic/run/round-1-codex.json",
+          "-"
+        ]
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "241aeab3d976814bf703568747793b3b722d903d012635a4aa1d8d307942424e"
+        }
+      }
+    },
+    "codex.implementer.processEnvironment": {
+      "header": {
+        "count": 1,
+        "outputs": [
+          {
+            "PATH": "/synthetic/guard-bin:/usr/bin",
+            "HOME": "/synthetic/home",
+            "COREPACK_HOME": "/synthetic/corepack",
+            "COREPACK_ENABLE_NETWORK": "0",
+            "NPM_CONFIG_USERCONFIG": "/synthetic/npmrc"
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.reviewer.processArgs": {
+      "header": {
+        "count": 10,
+        "first": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ]
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "760bf7ec5039385cc5f1208cba70bafaac4e90919773976921cda4f279a0fb98"
+        }
+      }
+    },
+    "claude.reviewer.reviewOutput": {
+      "header": {
+        "count": 4,
+        "outputs": [
+          {
+            "value": {
+              "verdict": "APPROVE",
+              "findings": [],
+              "checks": [
+                "odczyt diffu"
+              ],
+              "confirmedNoChanges": true
+            }
+          },
+          {
+            "text": "{\"verdict\":\"APPROVE\",\"findings\":[],\"checks\":[\"odczyt diffu\"],\"confirmedNoChanges\":true}"
+          },
+          {
+            "value": {
+              "verdict": "APPROVE",
+              "findings": [],
+              "checks": [
+                "odczyt diffu"
+              ],
+              "confirmedNoChanges": true
+            }
+          },
+          {
+            "$undefined": true
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.reviewer.fallbackReason": {
+      "header": {
+        "count": 5,
+        "outputs": [
+          "CAPACITY_UNAVAILABLE",
+          "MODEL_UNAVAILABLE",
+          "USAGE_LIMIT_EXHAUSTED",
+          {
+            "$undefined": true
+          },
+          {
+            "$undefined": true
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "runCodexRound domyślny implementation runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "d8d189471819b7f9201297dfb3fd2db0076d16277ba1dcb970caf04bed83e39e"
+        },
+        "outcome": {
+          "sha256": "1d2e0fd55f77c315831e08497e72fe94df4f3e17bd54312d87b3f8ed67fbf2f8"
+        }
+      }
+    },
+    "runCodexRound domyślny implementation runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "7720697730ae8293e9c6183688145c88ca9bde32f637bb53e1b7f38179ff67be"
+        },
+        "outcome": {
+          "sha256": "1d2e0fd55f77c315831e08497e72fe94df4f3e17bd54312d87b3f8ed67fbf2f8"
+        }
+      }
+    },
+    "runCodexRound domyślny analysis runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "a5ba2de197938dff9ff69a6ccfe673263fe578517cec1ccdc813a70622b702a8"
+        },
+        "outcome": {
+          "sha256": "b6e3c3c9d66f0bbe4e02e1e207f13318fe2e955c2ea4a40450c5f5b42a426294"
+        }
+      }
+    },
+    "runCodexRound domyślny analysis runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5c-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "8c1a9fecd11a87c2994636f19884355227b8c13f720ebbe9228b77d89218e8ae"
+        },
+        "outcome": {
+          "sha256": "b7782a1b9c7d29b40940c9ce6aa8fd7d04c96454d3d9eafab958bf98a91a2363"
+        }
+      }
+    },
+    "runCodexRound claude-implementer implementation runda 1": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "71f2dea53fd5d4510561a54a19917cd546a46aca047ed8ea0f43b201a88be6c3"
+        },
+        "outcome": {
+          "sha256": "778e55190ac01816d249846e0679d189c884272d341b4359e5b5915f7483a4c8"
+        }
+      }
+    },
+    "runCodexRound claude-implementer implementation runda 2": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)",
+          "--resume",
+          "22222222-2222-4222-8222-222222222222"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "39787de136936634e5b511865408f0dadfae3a154af552c2c939fb9887176b36"
+        },
+        "outcome": {
+          "sha256": "778e55190ac01816d249846e0679d189c884272d341b4359e5b5915f7483a4c8"
+        }
+      }
+    },
+    "runCodexRound claude-implementer analysis runda 1": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1452 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "dbb01a60fc5f119acf0b13ebafd31869b9c342663aa9c0fb7188c5673fdc1e13"
+        },
+        "outcome": {
+          "sha256": "a2dbbe33c45f2bc22026cc17afc5a6404bebe40aacc4aa707866dfa531b16aaf"
+        }
+      }
+    },
+    "runCodexRound claude-implementer analysis runda 2": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1452 znaków)",
+          "--resume",
+          "22222222-2222-4222-8222-222222222222"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "6365d654a5b37ba2016458ea0b0b82399dd7b0c06770f286a8f06cb26a7a6dd5"
+        },
+        "outcome": {
+          "sha256": "7928f175af22996205ad3176ab70fca768d46ea755dd148c3823d1f65801fe25"
+        }
+      }
+    },
+    "runCodexRound claude-implementer błąd 1": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)"
+        ],
+        "cwd": "<repo>",
+        "error": [
+          "INVALID_AGENT_OUTPUT",
+          "codex"
+        ]
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "71f2dea53fd5d4510561a54a19917cd546a46aca047ed8ea0f43b201a88be6c3"
+        },
+        "outcome": {
+          "sha256": "42ba12357c16464165a9113518f6551fca98f48f45439daf7cf8a5b9e31a8cae"
+        }
+      }
+    },
+    "runCodexRound claude-implementer błąd 2": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)",
+          "--resume",
+          "22222222-2222-4222-8222-222222222222"
+        ],
+        "cwd": "<repo>",
+        "error": [
+          "INVALID_AGENT_OUTPUT",
+          "codex"
+        ]
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "39787de136936634e5b511865408f0dadfae3a154af552c2c939fb9887176b36"
+        },
+        "outcome": {
+          "sha256": "42ba12357c16464165a9113518f6551fca98f48f45439daf7cf8a5b9e31a8cae"
+        }
+      }
+    },
+    "runCodexRound claude-implementer błąd 3": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)"
+        ],
+        "cwd": "<repo>",
+        "error": [
+          "INVALID_AGENT_OUTPUT",
+          "codex"
+        ]
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "71f2dea53fd5d4510561a54a19917cd546a46aca047ed8ea0f43b201a88be6c3"
+        },
+        "outcome": {
+          "sha256": "42ba12357c16464165a9113518f6551fca98f48f45439daf7cf8a5b9e31a8cae"
+        }
+      }
+    },
+    "runCodexRound claude-implementer błąd 4": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--restricted",
+          "--strict-mcp-config",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "acceptEdits",
+          "--permission-prompts",
+          "none",
+          "--tools",
+          "Read,Glob,Grep,Edit,Write,Bash",
+          "--disallowedTools",
+          "WebFetch,WebSearch",
+          "--settings",
+          "{\"sandbox\":{\"enabled\":true,\"failIfUnavailable\":true,\"allowUn… (173 znaków)",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"s… (1338 znaków)"
+        ],
+        "cwd": "<repo>",
+        "error": [
+          "INVALID_AGENT_OUTPUT",
+          "codex"
+        ]
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "71f2dea53fd5d4510561a54a19917cd546a46aca047ed8ea0f43b201a88be6c3"
+        },
+        "outcome": {
+          "sha256": "42ba12357c16464165a9113518f6551fca98f48f45439daf7cf8a5b9e31a8cae"
+        }
+      }
+    },
+    "runClaudeReview 0 domyślny/domyślny": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "955f45e706b630f34cb93722fb6a117c3460b831bee30e062707be93c1cabd42"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 1 claude-fable-5/high": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "955f45e706b630f34cb93722fb6a117c3460b831bee30e062707be93c1cabd42"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 2 claude-opus-5/xhigh": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "xhigh",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "fa2d95f35bea5ba189bea41ccc3c3c11694f3489ec030b37311c98c18f1d2d98"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 3 claude-opus-5/xhigh": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "xhigh",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "fa2d95f35bea5ba189bea41ccc3c3c11694f3489ec030b37311c98c18f1d2d98"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 4 claude-opus-5/high": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "0c6ae139d9c00f9e91f4ded7a132bbd4fd8998cfb3e075156075ff3e0ba05571"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 5 claude-opus-5/medium": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "medium",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "527c99c9e9954e00c11f7c331dd7b191e217123141d1ec439cbda26fb5295239"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    }
+  }
+}

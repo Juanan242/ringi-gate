@@ -1,0 +1,262 @@
+{
+  "format": 1,
+  "test": "run compatibility [golden]: full-run report and events of the default profile are identical",
+  "baseline": "core before the claude implementer",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {
+    "durationMs": "Pola durationMs (zegar rzeczywisty procesów bramek) mają wartość 0.",
+    "dependencyMetadataFingerprint": "dependencyMetadata.fingerprint (SHA-256 z inode i mtime plików node_modules, które test tworzy w każdym przebiegu) ma wartość \"<sha256>\" po sprawdzeniu formatu.",
+    "temporaryPaths": "Ścieżki katalogów tymczasowych tworzonych przez test (repozytorium, tempRoot rundy, katalog CLI; także po realpath) są zastąpione znacznikami <repo>, <temp>, <root>.",
+    "runnerFingerprint": "Pole raportu runner (odcisk SHA-256 plików runnera, zmienia się z każdą zmianą kodu runnera; także w raporcie zdarzenia result i w raporcie partial) jest pominięte po sprawdzeniu formatu, jak w wersji sprzed tego pola."
+  },
+  "entries": {
+    "dry-run implementation": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "34f61ba1ce2fe4f56a5ad98de2367a7872d721ab9feeefebe7753026454151dd",
+          "orderedSha256": "7f70306702d940d2eeb3573a81522e1521b88392274be7ff15583a2560025878"
+        },
+        "events": {
+          "sha256": "085dff4d1e371994e207c1a2b6ce48a59dfdc9088fbe96c45c357848547890c9",
+          "orderedSha256": "e011c0424338c375c330678c279633ceb61419d157364dd7a7ca11200c645d9b"
+        }
+      }
+    },
+    "dry-run analysis": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "7f36e798b38b958534e2bc2ebc09bd01b2920148fa9b2d48ba6feac335c10e1a",
+          "orderedSha256": "45958b24f2304b8c9ff094a81a4fa9fa613459bebdbb692474100d00f82388c1"
+        },
+        "events": {
+          "sha256": "b0cdee0211bdea07dc6aaa270546f4292a716840948aefd78ba8d4827a2d1890",
+          "orderedSha256": "bedc128251fea200fa47fe1ea06f4426fb8b5f58375f9edac2477bda24dcce67"
+        }
+      }
+    },
+    "dry-run critical-opus/gpt-6-sol/max": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6-sol/max",
+        "implementer": "codex/gpt-6-sol/max",
+        "review": "critical-opus 0/1",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "3fa1d1e3b5da833f88a6557ed42d85991a65042dd6d0efad4aea3421c055162e",
+          "orderedSha256": "33059a119e02e94f30fcc61c319eb82990f3040a6a6e3578d6237c589af2cc71"
+        },
+        "events": {
+          "sha256": "c856778f3fa4e62537e3ae02a977a84fe05d49abd08609709cf8979280e72085",
+          "orderedSha256": "5f179dca88ad9e53c4b746adcee0957995e5c973787b1a5687193e002b00eefc"
+        }
+      }
+    },
+    "APPROVE z fallbackiem i korektą": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 3/2",
+        "events": 38
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "81412e9e97352b1d43f4754f493306e6059b1b0253c87d1ca4785adb85a6d0a0",
+          "orderedSha256": "b1c21657d77cc15b99dbc1f50519700f29f759ce42d88ab77944ae44b2bc1365"
+        },
+        "events": {
+          "sha256": "8f98ef003049f2e8e029d6de5280cde185b7d9be233efe1dad0a9a6469f38c4c",
+          "orderedSha256": "f0e668507f06ba6046508ac410b883975610a38a4f0a48fe8b8a11ac71caaa93"
+        }
+      }
+    },
+    "APPROVE po odrzuceniu findingu przez wykonawcę": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 2/2",
+        "events": 36
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "4bb5b40025fd419ab8fc8c983dbc7ebc7bf52e0f32096f182389572927f3d6d8",
+          "orderedSha256": "b11bb28e7c03ea65dd8a26d3f3a5bfdde023767413d92fad03d1327f07354ecf"
+        },
+        "events": {
+          "sha256": "fedc05a0c2ed3382e3518f364a03f9f8bf081f2bd316aad24cd6a0aaa6da9183",
+          "orderedSha256": "132cd416d7c107851b796d01d7609df4a4c5490aba3f756ddba727a04c7015ae"
+        }
+      }
+    },
+    "APPROVE docs-minor bez review": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "undefined 0/undefined",
+        "events": 14
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "a64c2c81669d2f381b49a3f1e6a490f4c60e188cffe7042d01c6726090a3fccb",
+          "orderedSha256": "3f641e8498d4c93439dece7fc5c510ca19748ce37ebb369a45256261988eeb94"
+        },
+        "events": {
+          "sha256": "0b2c54c9468d61458b9414ed81f6f64554e37b560191917f41084b1359b8a917",
+          "orderedSha256": "4fbf3c7b088c619684efa8f3dba153fb00c22c1cce37e356202996576e320eec"
+        }
+      }
+    },
+    "APPROVE analysis": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 1/2",
+        "events": 16
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "ce58c5fda214735f21e74d2f365faa0e48967e516cafe07055beee45e47b3df5",
+          "orderedSha256": "62908ff4e267cce73e87aea33a38b4f6734b34740a248f816fb82130ffe369b7"
+        },
+        "events": {
+          "sha256": "3ed63057db7e6a098044dbec1700574e777e1a84b3f9ff2a5b30ba49fb8f6bbd",
+          "orderedSha256": "6e10deceacdb47d77436ce711a705d4cf85efd1b561bf6642976a962f751fd83"
+        }
+      }
+    },
+    "STOPPED MAX_ROUNDS": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "claude",
+        "code": "MAX_ROUNDS",
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 1/2",
+        "events": 20
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "4cf780b77cc1db5f34b52209903d956d671f60d77ee53631f567544ba1617436",
+          "orderedSha256": "37d70b92782b0553eea2c028122729f510f2e12c6b32d236c77a9e8fcbf9162c"
+        },
+        "events": {
+          "sha256": "eb81212067589babeb52eeed5261584b65672af5a8823d5bd929f9050e94a53e",
+          "orderedSha256": "315cb45a1d4c6c60077743bf728d75c53d933633870921d38e75b5c198b0877f"
+        }
+      }
+    },
+    "STOPPED INVALID_REVIEW_PROFILE": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_REVIEW_PROFILE",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "invalid 0/0",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "0f0d0a191ceb272704f9391a541a3879d00252f4f6e1f19ea34183d732a8a1ff",
+          "orderedSha256": "2cddd7fb26160272a4c4902c5a2e4a05b98af3ea4ce547b05766d7593a2a6b0d"
+        },
+        "events": {
+          "sha256": "6605b97d43e0e1a10b52bb82785c513a819f581223f0abbafeafab8bae6a5ef4",
+          "orderedSha256": "78449dae6220cbe4f863b62d9dba5644e59f575e8cb9587206fb3bb158b52794"
+        }
+      }
+    },
+    "STOPPED INVALID_SOL_EFFORT": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_SOL_EFFORT",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/null",
+        "implementer": "codex/gpt-6.1-sol",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "b9a6d59483f04076cdace6b95ae1d544fa8b3d5fe972a56a00ec13e0fe75efb0",
+          "orderedSha256": "ce62269953e2b488690c81583b4bdd483668fcd933c49b645870fdcf4d7e365c"
+        },
+        "events": {
+          "sha256": "9b4245e4600ca1ca624e9d4fbcaff4263bf2604c4b9f29ff67fefc8003028a9d",
+          "orderedSha256": "66c569d112440e8a003e984e6808afde784ae9c617284fb3721a731d4c321b52"
+        }
+      }
+    }
+  }
+}

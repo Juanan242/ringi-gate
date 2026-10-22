@@ -1,0 +1,263 @@
+{
+  "format": 1,
+  "test": "run compatibility [golden]: full-run report and events without neutral role fields match the snapshot of the version before those fields",
+  "baseline": "core before neutral role fields",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {
+    "durationMs": "Pola durationMs (zegar rzeczywisty procesów bramek) mają wartość 0.",
+    "dependencyMetadataFingerprint": "dependencyMetadata.fingerprint (SHA-256 z inode i mtime plików node_modules, które test tworzy w każdym przebiegu) ma wartość \"<sha256>\" po sprawdzeniu formatu.",
+    "temporaryPaths": "Ścieżki katalogów tymczasowych tworzonych przez test (repozytorium, tempRoot rundy, katalog CLI; także po realpath) są zastąpione znacznikami <repo>, <temp>, <root>.",
+    "neutralRoleFields": "Neutralne pola ról (raport: implementer, reviewer, agents.implementer/reviewer, findings.rejectedByImplementer, rounds[].implementer/reviewer; zdarzenia: actor, provider, metadata.implementer/reviewer) są pominięte, jak w wersji sprzed tych pól.",
+    "runnerFingerprint": "Pole raportu runner (odcisk SHA-256 plików runnera, zmienia się z każdą zmianą kodu runnera; także w raporcie zdarzenia result i w raporcie partial) jest pominięte po sprawdzeniu formatu, jak w wersji sprzed tego pola."
+  },
+  "entries": {
+    "dry-run implementation": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "39320116c40f27fdc49984b6d1f83a9767dc8c2fffe8680746bda1ea0f8103fd",
+          "orderedSha256": "542f4841aab4bc62fe18ef4fc47fdd89e93a429dc855522b4f561ffecbffa0d9"
+        },
+        "events": {
+          "sha256": "ad46a6134a286dd4847e6a9c178171e33d66b0675619d76d6dfbe9698b97bdb1",
+          "orderedSha256": "a36045c116d5e0a0a0ca644d73bfccceae2c19b7db677bb5bf479d96d057980a"
+        }
+      }
+    },
+    "dry-run analysis": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "6d94cc2c6ea957cdeca3805ed172ad99e6f0931259d2124c0ade98b0696fdad3",
+          "orderedSha256": "6bd8e65230821e3b9cc9f043d379eea831213706b4027faf06647db97eb66c4e"
+        },
+        "events": {
+          "sha256": "2e9be46a24c3d7260109b13e2421a62e749687bda447beb4a903a898eddc7e27",
+          "orderedSha256": "fd138391e14cc755c601ea2f29ef76d63434c1e2083c105a993fe4edeb4a98cf"
+        }
+      }
+    },
+    "dry-run critical-opus/gpt-6-sol/max": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6-sol/max",
+        "implementer": null,
+        "review": "critical-opus 0/1",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "10f87290edbd749669def12b585a455af01d53dfa2da6ab4dcf90e54186323e6",
+          "orderedSha256": "9c7a662cfd3b498ca7312dbad1387b4efb9dd7b8de2e2e0addb047a318b80b37"
+        },
+        "events": {
+          "sha256": "e643f2befc13e524d4bcd8de2a99a85f5035370c0577b3841dbd3526260f89f3",
+          "orderedSha256": "d22b82008583f64e980cf29c5ffdbba7e5a756b5c121cab45308c601af293a9a"
+        }
+      }
+    },
+    "APPROVE z fallbackiem i korektą": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 3/2",
+        "events": 38
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "ed1228de4c890025d32382ead359d456ad333156b8f426b7f7523af78e9502b4",
+          "orderedSha256": "fe2be8bb470315ddc1b270d810480e186cb5a01dabbdfec7e064047c257d3c4e"
+        },
+        "events": {
+          "sha256": "63f0d87c7abce49af9b39a630ac64f5b1c9120fc4abc89334cc56e1fa9f03471",
+          "orderedSha256": "6823d804a22679b80a35327f8f3bf77186f8e1033e96b427e7e507ccf9e7aa0b"
+        }
+      }
+    },
+    "APPROVE po odrzuceniu findingu przez wykonawcę": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 2/2",
+        "events": 36
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "9b2e99389d66617b581b10dd152a160984d6d80d7f9b2120349c2e6ba5ecf62a",
+          "orderedSha256": "201c6c68103a2644a03d2385fda62c9a2f794083c5505d5c0bc91fb66b422a52"
+        },
+        "events": {
+          "sha256": "4f64fa5c9c022e241892e8d344ccc5b459c1ef0a5ebcb97beff27fe7800f55d9",
+          "orderedSha256": "952f022586c3aa4b1c04879467004b3e7a46d14c90a75f3677902bf31a242f0a"
+        }
+      }
+    },
+    "APPROVE docs-minor bez review": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "undefined 0/undefined",
+        "events": 14
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "624893d5104dea89caeb702a0978f7830904825598c981fe7869207fa8b3546e",
+          "orderedSha256": "7e80256c8665dea25a423443ecb88b0a001d223937f8c8b04a74ca0fd3e171be"
+        },
+        "events": {
+          "sha256": "4279cd5923452605d99915fa708a2461fc6dacd933a73aa2cf1e4b19ed0a8037",
+          "orderedSha256": "4f771d9eb5683ba07e86fd8baa087f471c1f94e0605f94fffe0140a9d48ace0f"
+        }
+      }
+    },
+    "APPROVE analysis": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 1/2",
+        "events": 16
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "4fda09e9b988dff5ff7dc572c8c7de270bafec50815a49d00fb5460f70e0894a",
+          "orderedSha256": "5ae1483b95206fd609bce83e594b1855ca00fd6038447b549e5b994ff39765b8"
+        },
+        "events": {
+          "sha256": "c46ee972502f9621855d8ddb6c82c4eaa9a86c87d7b19cfad5d86d71de7ae3d0",
+          "orderedSha256": "44800cc336d302250dce5535bd26bf334086b605e9c287021497ce9e21b29d2e"
+        }
+      }
+    },
+    "STOPPED MAX_ROUNDS": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "claude",
+        "code": "MAX_ROUNDS",
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "critical 1/2",
+        "events": 20
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "3ef74f1a9129e194760781709a1b6fa4711e4ae13fd5df233a8f4765988bc530",
+          "orderedSha256": "c8a2408036714e57d0f2f183532b6f34da72b9e54b34d7f8fe1d59b7ca3a2749"
+        },
+        "events": {
+          "sha256": "e78e986b77d0bfcbebae9e516fd10929842243ca4c2ae5ce153be96ba2cdcafc",
+          "orderedSha256": "7094727fa949a67dc71caa69d940aefa051d02e00d5e65a7b1e6647492403d98"
+        }
+      }
+    },
+    "STOPPED INVALID_REVIEW_PROFILE": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_REVIEW_PROFILE",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/high",
+        "implementer": null,
+        "review": "invalid 0/0",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "e11fe735fe3016a4df3bc735b2183cdcc11b2666c71594cfb464de572f0cb9c3",
+          "orderedSha256": "fb9993bb56baed819b22b1c160db600d3cc956cca3b6a9fc3380b0bfd59bd8d9"
+        },
+        "events": {
+          "sha256": "7af2f470c209786542caa2525d077ab01444a8e4ec7cb10c4565765765a29fb4",
+          "orderedSha256": "e68f7434c256abc3e554ab64334628680e6e7073be00c12a5e5060c9c826ab6d"
+        }
+      }
+    },
+    "STOPPED INVALID_SOL_EFFORT": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_SOL_EFFORT",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/null",
+        "implementer": null,
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "126ba61b755b4b241e559ae95027a9dee3bc3ef3d4976b674bd0ef5aee3f0d5b",
+          "orderedSha256": "2bc431dc8db995ba3ad272d0900fadfff98f54821c27629aced02074823ac746"
+        },
+        "events": {
+          "sha256": "f089d41781197fb4bf37dc78807a23146364f3257f20bcf233808a5fdb067d72",
+          "orderedSha256": "e3d3577077d22135229da98df74809d24942c9c9ee1fc1cb3b7cc0d7a3b1596c"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "test": "profile locale outside a run [golden]: profile, task, parser and dashboard match the snapshot in pl and do not depend on the caller in en",
+  "baseline": "last core before locale",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {},
+  "entries": {
+    "resolveRunnerProfile": {
+      "header": {
+        "code": "INVALID_CONFIGURATION",
+        "message": "Niepoprawny moduł dostawcy w profilu runnera: Provider module provider: has no id."
+      },
+      "subtrees": {}
+    },
+    "resolveAgentRoles": {
+      "header": {
+        "code": "INVALID_CONFIGURATION",
+        "message": "Niepoprawny moduł dostawcy w profilu runnera: Provider module provider: has no id."
+      },
+      "subtrees": {}
+    },
+    "parseAgentArguments": {
+      "header": {
+        "code": "INVALID_CONFIGURATION",
+        "message": "Niepoprawny moduł dostawcy w profilu runnera: Provider module provider: has no id."
+      },
+      "subtrees": {}
+    },
+    "createDashboardState": {
+      "header": {
+        "code": "INVALID_CONFIGURATION",
+        "message": "Niepoprawny moduł dostawcy w profilu runnera: Provider module provider: has no id."
+      },
+      "subtrees": {}
+    },
+    "validateTaskMarkdown: rozmiar": {
+      "header": {
+        "code": "INVALID_TASK",
+        "message": "Plik zadania przekracza limit 256 KiB."
+      },
+      "subtrees": {}
+    },
+    "validateTaskMarkdown: sekcje": {
+      "header": {
+        "code": "INVALID_TASK",
+        "message": "Brak niepustej sekcji „cel” w pliku zadania."
+      },
+      "subtrees": {}
+    }
+  }
+}

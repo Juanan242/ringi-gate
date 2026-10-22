@@ -1,0 +1,50 @@
+{
+  "name": "ringi-gate",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Fail-closed pipeline for AI coding agents: one writer, independent read-only review, deterministic gates, human decides on publication.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kxmskx/ringi-gate.git"
+  },
+  "homepage": "https://github.com/kxmskx/ringi-gate#readme",
+  "bugs": {
+    "url": "https://github.com/kxmskx/ringi-gate/issues"
+  },
+  "keywords": [
+    "ai-agents",
+    "code-review",
+    "fail-closed",
+    "quality-gates",
+    "codex",
+    "claude-code",
+    "pnpm"
+  ],
+  "type": "module",
+  "bin": {
+    "ringi": "bin/ringi.mjs"
+  },
+  "files": [
+    "bin/",
+    "scripts/",
+    "!scripts/fixtures/",
+    "examples/",
+    "!**/*.test.mjs",
+    "docs/",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "CHANGELOG.md",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test scripts/agent-review-loop.test.mjs"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3"
+  }
+}

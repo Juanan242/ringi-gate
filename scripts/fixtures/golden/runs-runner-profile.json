@@ -1,0 +1,502 @@
+{
+  "format": 1,
+  "test": "runner profile run compatibility [golden]: full-run report and events of the default profile and with claude as implementer are identical",
+  "baseline": "core with provider modules and the runner profile, before locale",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {
+    "durationMs": "Pola durationMs (zegar rzeczywisty procesów bramek) mają wartość 0.",
+    "dependencyMetadataFingerprint": "dependencyMetadata.fingerprint (SHA-256 z inode i mtime plików node_modules, które test tworzy w każdym przebiegu) ma wartość \"<sha256>\" po sprawdzeniu formatu.",
+    "temporaryPaths": "Ścieżki katalogów tymczasowych tworzonych przez test (repozytorium, tempRoot rundy, katalog CLI; także po realpath) są zastąpione znacznikami <repo>, <temp>, <root>.",
+    "runnerFingerprint": "Pole raportu runner (odcisk SHA-256 plików runnera, zmienia się z każdą zmianą kodu runnera; także w raporcie zdarzenia result i w raporcie partial) jest pominięte po sprawdzeniu formatu, jak w wersji sprzed tego pola."
+  },
+  "entries": {
+    "domyślny: dry-run implementation": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "34f61ba1ce2fe4f56a5ad98de2367a7872d721ab9feeefebe7753026454151dd",
+          "orderedSha256": "7f70306702d940d2eeb3573a81522e1521b88392274be7ff15583a2560025878"
+        },
+        "events": {
+          "sha256": "085dff4d1e371994e207c1a2b6ce48a59dfdc9088fbe96c45c357848547890c9",
+          "orderedSha256": "e011c0424338c375c330678c279633ceb61419d157364dd7a7ca11200c645d9b"
+        }
+      }
+    },
+    "domyślny: dry-run analysis": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "7f36e798b38b958534e2bc2ebc09bd01b2920148fa9b2d48ba6feac335c10e1a",
+          "orderedSha256": "45958b24f2304b8c9ff094a81a4fa9fa613459bebdbb692474100d00f82388c1"
+        },
+        "events": {
+          "sha256": "b0cdee0211bdea07dc6aaa270546f4292a716840948aefd78ba8d4827a2d1890",
+          "orderedSha256": "bedc128251fea200fa47fe1ea06f4426fb8b5f58375f9edac2477bda24dcce67"
+        }
+      }
+    },
+    "domyślny: dry-run critical-opus/gpt-6-sol/max": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6-sol/max",
+        "implementer": "codex/gpt-6-sol/max",
+        "review": "critical-opus 0/1",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "3fa1d1e3b5da833f88a6557ed42d85991a65042dd6d0efad4aea3421c055162e",
+          "orderedSha256": "33059a119e02e94f30fcc61c319eb82990f3040a6a6e3578d6237c589af2cc71"
+        },
+        "events": {
+          "sha256": "c856778f3fa4e62537e3ae02a977a84fe05d49abd08609709cf8979280e72085",
+          "orderedSha256": "5f179dca88ad9e53c4b746adcee0957995e5c973787b1a5687193e002b00eefc"
+        }
+      }
+    },
+    "domyślny: APPROVE z fallbackiem i korektą": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 3/2",
+        "events": 38
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "81412e9e97352b1d43f4754f493306e6059b1b0253c87d1ca4785adb85a6d0a0",
+          "orderedSha256": "b1c21657d77cc15b99dbc1f50519700f29f759ce42d88ab77944ae44b2bc1365"
+        },
+        "events": {
+          "sha256": "8f98ef003049f2e8e029d6de5280cde185b7d9be233efe1dad0a9a6469f38c4c",
+          "orderedSha256": "f0e668507f06ba6046508ac410b883975610a38a4f0a48fe8b8a11ac71caaa93"
+        }
+      }
+    },
+    "domyślny: APPROVE po odrzuceniu findingu przez wykonawcę": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 2/2",
+        "events": 36
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "4bb5b40025fd419ab8fc8c983dbc7ebc7bf52e0f32096f182389572927f3d6d8",
+          "orderedSha256": "b11bb28e7c03ea65dd8a26d3f3a5bfdde023767413d92fad03d1327f07354ecf"
+        },
+        "events": {
+          "sha256": "fedc05a0c2ed3382e3518f364a03f9f8bf081f2bd316aad24cd6a0aaa6da9183",
+          "orderedSha256": "132cd416d7c107851b796d01d7609df4a4c5490aba3f756ddba727a04c7015ae"
+        }
+      }
+    },
+    "domyślny: APPROVE docs-minor bez review": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "undefined 0/undefined",
+        "events": 14
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "a64c2c81669d2f381b49a3f1e6a490f4c60e188cffe7042d01c6726090a3fccb",
+          "orderedSha256": "3f641e8498d4c93439dece7fc5c510ca19748ce37ebb369a45256261988eeb94"
+        },
+        "events": {
+          "sha256": "0b2c54c9468d61458b9414ed81f6f64554e37b560191917f41084b1359b8a917",
+          "orderedSha256": "4fbf3c7b088c619684efa8f3dba153fb00c22c1cce37e356202996576e320eec"
+        }
+      }
+    },
+    "domyślny: APPROVE analysis": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 1/2",
+        "events": 16
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "ce58c5fda214735f21e74d2f365faa0e48967e516cafe07055beee45e47b3df5",
+          "orderedSha256": "62908ff4e267cce73e87aea33a38b4f6734b34740a248f816fb82130ffe369b7"
+        },
+        "events": {
+          "sha256": "3ed63057db7e6a098044dbec1700574e777e1a84b3f9ff2a5b30ba49fb8f6bbd",
+          "orderedSha256": "6e10deceacdb47d77436ce711a705d4cf85efd1b561bf6642976a962f751fd83"
+        }
+      }
+    },
+    "domyślny: STOPPED MAX_ROUNDS": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "claude",
+        "code": "MAX_ROUNDS",
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "critical 1/2",
+        "events": 20
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "4cf780b77cc1db5f34b52209903d956d671f60d77ee53631f567544ba1617436",
+          "orderedSha256": "37d70b92782b0553eea2c028122729f510f2e12c6b32d236c77a9e8fcbf9162c"
+        },
+        "events": {
+          "sha256": "eb81212067589babeb52eeed5261584b65672af5a8823d5bd929f9050e94a53e",
+          "orderedSha256": "315cb45a1d4c6c60077743bf728d75c53d933633870921d38e75b5c198b0877f"
+        }
+      }
+    },
+    "domyślny: STOPPED INVALID_REVIEW_PROFILE": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_REVIEW_PROFILE",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/high",
+        "implementer": "codex/gpt-6.1-sol/high",
+        "review": "invalid 0/0",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "0f0d0a191ceb272704f9391a541a3879d00252f4f6e1f19ea34183d732a8a1ff",
+          "orderedSha256": "2cddd7fb26160272a4c4902c5a2e4a05b98af3ea4ce547b05766d7593a2a6b0d"
+        },
+        "events": {
+          "sha256": "6605b97d43e0e1a10b52bb82785c513a819f581223f0abbafeafab8bae6a5ef4",
+          "orderedSha256": "78449dae6220cbe4f863b62d9dba5644e59f575e8cb9587206fb3bb158b52794"
+        }
+      }
+    },
+    "domyślny: STOPPED INVALID_SOL_EFFORT": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_SOL_EFFORT",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "gpt-6.1-sol/null",
+        "implementer": "codex/gpt-6.1-sol",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "b9a6d59483f04076cdace6b95ae1d544fa8b3d5fe972a56a00ec13e0fe75efb0",
+          "orderedSha256": "ce62269953e2b488690c81583b4bdd483668fcd933c49b645870fdcf4d7e365c"
+        },
+        "events": {
+          "sha256": "9b4245e4600ca1ca624e9d4fbcaff4263bf2604c4b9f29ff67fefc8003028a9d",
+          "orderedSha256": "66c569d112440e8a003e984e6808afde784ae9c617284fb3721a731d4c321b52"
+        }
+      }
+    },
+    "claude-implementer: dry-run implementation": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "dc4e340cf7c67e810c83b3e6849af998cacd1b8174f7e5b677d0d8649246de10",
+          "orderedSha256": "62b387d1378b618944d926032f28afd66c6f148b1e74f6961004528ea00a1831"
+        },
+        "events": {
+          "sha256": "6dd6f9243efb589151f7e4542e669952e6d2af83ce132c40d977906a192cd7e4",
+          "orderedSha256": "14b069c9080dc9b8ada8b989df059f37eca6527ac963b354f80e4f81d8c00964"
+        }
+      }
+    },
+    "claude-implementer: dry-run analysis": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "30f2510b23105b8ecf7586bcd8eafe39f6fde3e093d76f785fe98d9985de4a16",
+          "orderedSha256": "c08fcace71ffe5cb500f52eb63be19cfec2a88bc2458ae054e8a88dc6e486502"
+        },
+        "events": {
+          "sha256": "c6ff2ff22a110e2b11cbe0b597e346912bf6e98bccbf9f3a2a763aac9a279a7e",
+          "orderedSha256": "db20e5ccca3b9484cac037e990be924442da490bea8592710844752c7aa83cc0"
+        }
+      }
+    },
+    "claude-implementer: dry-run critical-opus/claude-fable-5/xhigh": {
+      "header": {
+        "status": "DRY_RUN_OK",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-fable-5/xhigh",
+        "implementer": "claude/claude-fable-5/xhigh",
+        "review": "critical-opus 0/1",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "8ed144c97c52cfb627848ef8709c75abcab35910ff1429f61bc4f7b5c9dfd60a",
+          "orderedSha256": "afb4ba7124f2995bf6a1a311659dbe972adaf29d246219d7ea4353d0b7b9c864"
+        },
+        "events": {
+          "sha256": "38df27216da1e6518f41dff3a76ebf082f4c2595e0f28c36b75d00162a4b653f",
+          "orderedSha256": "e616cf0fdd523ef6624199fbe1990193ee4e66d0f5a021cdde5446c4b7313266"
+        }
+      }
+    },
+    "claude-implementer: APPROVE z fallbackiem i korektą": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 3/2",
+        "events": 38
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "e09c60a824f6c9d58fd61d6d8c4f7e1811abde5fcd0cb30fddba75f645a60d53",
+          "orderedSha256": "61f6b8e1858bf8f35e0326ccdabdf9cdb7e801cede96dd77dd9a1c459caeafb2"
+        },
+        "events": {
+          "sha256": "87a14084212619c246d326f6ebf7347a783985ec8cd061af681d0ead9da3e793",
+          "orderedSha256": "bacb84623e0f3bf79d7350cb22db0b647a6827c18c0e465e28694b49a2e7d38d"
+        }
+      }
+    },
+    "claude-implementer: APPROVE po odrzuceniu findingu przez wykonawcę": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 2,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 2/2",
+        "events": 36
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "bccabbf1e488c21064e6f5934dbc5e75e5a6ed77130fa39301355f6401596083",
+          "orderedSha256": "448a13ee5970cb0107a2d9ad06feaacc117f405d92abecc6c822cd3251f9c824"
+        },
+        "events": {
+          "sha256": "e4c30d4ba847d49172418b57032650a5598921a3a280358b817be47c1abb7ac1",
+          "orderedSha256": "99249c91f7ed9c92922dcdab95aef0c75fa41755d079b2935627de35ecf6cb3b"
+        }
+      }
+    },
+    "claude-implementer: APPROVE docs-minor bez review": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "undefined 0/undefined",
+        "events": 14
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "b455bb079d56f814c8e68d5a8b782c30d8fe21da87e072b0aaef5bd0fe3d1238",
+          "orderedSha256": "7750eb86071d4772ff7db0278275c31f21838d6b0cc4ad4fde90c068d3bee1fa"
+        },
+        "events": {
+          "sha256": "c0f70628dc86b5105af226751bd7225adab102b500a813d5d49569b57a7de8a3",
+          "orderedSha256": "d1bfe8af72acc6370a46bda331ca108e7e6a89b815b167ba8b0b9d8f854b1b68"
+        }
+      }
+    },
+    "claude-implementer: APPROVE analysis": {
+      "header": {
+        "status": "APPROVE",
+        "stage": null,
+        "code": null,
+        "taskMode": "analysis",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 1/2",
+        "events": 16
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "acfe11e8c2ae67109255848adceeded87fcba0e0dafad328d29cd38d4af6a8b2",
+          "orderedSha256": "e776d4029d1b68cdf4ef26ce797f678055e07126e3bde3489005cbf341d51ffe"
+        },
+        "events": {
+          "sha256": "e5e138daa15944a03cc7ad7224e4133e40af21e40522e5b574ae9a63a5a493fd",
+          "orderedSha256": "93a7cefeeefac02e3aef927d797c07dec8fa21384a3e554288c3ae33ec40a47b"
+        }
+      }
+    },
+    "claude-implementer: STOPPED MAX_ROUNDS": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "claude",
+        "code": "MAX_ROUNDS",
+        "taskMode": "implementation",
+        "rounds": 1,
+        "head": "4b8b32cfe779d9e9e0e101b9093d7b56a8f42858",
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "critical 1/2",
+        "events": 20
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "2c6ba0d67134714c7023ea5697df42555a6de0c04f6c63d7f7b84cae2014e37a",
+          "orderedSha256": "52bcf41cc9169978362bb97f65d26c7e184a996c46d18646ac76f33ce064b656"
+        },
+        "events": {
+          "sha256": "9afa10f5423552144e966ecb3f4955a74961ad160ca2e95b06801086eaece5e2",
+          "orderedSha256": "1b72c22390165369b24262d0343ef09648fe568dc4b0f98d5016be2489d87a18"
+        }
+      }
+    },
+    "claude-implementer: STOPPED INVALID_REVIEW_PROFILE": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_REVIEW_PROFILE",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "claude-opus-5/high",
+        "implementer": "claude/claude-opus-5/high",
+        "review": "invalid 0/0",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "bd525f867110bb123f6125690f267e9a85409f6dba7ac8047a330efadca9d883",
+          "orderedSha256": "c2ad4cc565a9a75dc9e9d036a49814e7047e294197351fa3da373b5fe54f892b"
+        },
+        "events": {
+          "sha256": "d495980d237f19fff43ddd4af5f3106607a39ca7f6c7190132980062c3ead2e8",
+          "orderedSha256": "d832fac167e85fc60945b78958b6d077d4a220c4d34930178c700b9dbb18ec13"
+        }
+      }
+    },
+    "claude-implementer: STOPPED INVALID_SOL_EFFORT": {
+      "header": {
+        "status": "STOPPED",
+        "stage": "preflight",
+        "code": "INVALID_SOL_EFFORT",
+        "taskMode": "implementation",
+        "rounds": 0,
+        "head": null,
+        "sol": "claude-opus-5/null",
+        "implementer": "claude/claude-opus-5",
+        "review": "critical 0/2",
+        "events": 2
+      },
+      "subtrees": {
+        "report": {
+          "sha256": "e3f0aec021a12510a833128b66240165c18009713cf55bbc702106e71c158de8",
+          "orderedSha256": "f12a0e71d7c0fee63bc264858e86cc1ff86a540dd554178966501017e3996530"
+        },
+        "events": {
+          "sha256": "de1987fd4c6a60bf37b84105653c6e214503781d7b5afe99a46a6a86be9dc736",
+          "orderedSha256": "29e554f693d9e465fd0a6147e7daa22e53bfe446515914f92668812278d132e0"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: npm test (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: ['24']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ matrix.node }}
+
+      # Part of the suite runs the real pnpm offline from the local Corepack
+      # cache (docs/testing.md). Corepack downloads pnpm into its cache here;
+      # the tests themselves run with Corepack network disabled.
+      - name: Prepare pnpm in the Corepack cache
+        run: |
+          corepack enable pnpm
+          corepack install -g --cache-only pnpm@11.20.0
+
+      - run: npm ci
+
+      - run: npm test
+
+      - name: Validate examples
+        run: node --test examples/validate-examples.test.mjs

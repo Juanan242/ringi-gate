@@ -1,0 +1,705 @@
+{
+  "format": 1,
+  "test": "adapter compatibility [golden]: codex and claude-reviewer argv, environment and results are unchanged",
+  "baseline": "core before the claude implementer",
+  "environment": {
+    "PATH": "/synthetic/bin:/usr/bin:/bin",
+    "HOME": "/Users/synthetic",
+    "USER": "synthetic",
+    "LOGNAME": "synthetic",
+    "SHELL": "/bin/sh",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb"
+  },
+  "normalizations": {
+    "durationMs": "Pola durationMs (zegar rzeczywisty procesów bramek) mają wartość 0.",
+    "temporaryPaths": "Ścieżki katalogów tymczasowych tworzonych przez test (repozytorium, tempRoot rundy, katalog CLI; także po realpath) są zastąpione znacznikami <repo>, <temp>, <root>.",
+    "guardBin": "Pierwszy element PATH wywołania procesu (katalog guard-bin tworzony przy każdym wywołaniu) ma wartość <guard-bin>.",
+    "activityCallback": "Opcja procesu onActivityChunk (funkcja) jest pominięta."
+  },
+  "entries": {
+    "moduł dostawców": {
+      "header": {
+        "exports": [
+          "CLAUDE_EFFORTS",
+          "CODEX_MODEL",
+          "DEFAULT_IMPLEMENTER",
+          "DEFAULT_REVIEWER",
+          "DEFAULT_REVIEW_PROFILE",
+          "DEFAULT_SOL_EFFORT",
+          "PROVIDERS",
+          "REVIEW_PROFILES",
+          "SOL_EFFORTS",
+          "isValidModelId"
+        ]
+      },
+      "subtrees": {
+        "constants": {
+          "sha256": "cec38c1e0b0f640cf0f81fe66d7e3cf829cf81b93a6846292ce2acdf19b2758a"
+        },
+        "shape": {
+          "sha256": "e8f3065d42ebee771cd30a49cf77406895d268b1da80a86466cfc603e6d605de"
+        }
+      }
+    },
+    "codex.implementer.processArgs": {
+      "header": {
+        "count": 48,
+        "first": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "/synthetic/repo",
+          "-c",
+          "model_reasoning_effort=\"medium\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "/synthetic/run/codex-output-schema.json",
+          "--json",
+          "-o",
+          "/synthetic/run/round-1-codex.json",
+          "-"
+        ]
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "6d553603fefa7ffec86885a986cacfdd58c3f38ab4faac9b259e346cbeebc966"
+        }
+      }
+    },
+    "codex.implementer.processEnvironment": {
+      "header": {
+        "count": 1,
+        "outputs": [
+          {
+            "PATH": "/synthetic/guard-bin:/usr/bin",
+            "HOME": "/synthetic/home",
+            "COREPACK_HOME": "/synthetic/corepack",
+            "COREPACK_ENABLE_NETWORK": "0",
+            "NPM_CONFIG_USERCONFIG": "/synthetic/npmrc"
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "codex.implementer.sessionId": {
+      "header": {
+        "count": 5,
+        "outputs": [
+          "22222222-2222-4222-8222-222222222222",
+          "session-y",
+          "22222222-2222-4222-8222-222222222222",
+          {
+            "$undefined": true
+          },
+          {
+            "$undefined": true
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.reviewer.processArgs": {
+      "header": {
+        "count": 10,
+        "first": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ]
+      },
+      "subtrees": {
+        "outputs": {
+          "sha256": "760bf7ec5039385cc5f1208cba70bafaac4e90919773976921cda4f279a0fb98"
+        }
+      }
+    },
+    "claude.reviewer.processEnvironment": {
+      "header": {
+        "count": 1,
+        "outputs": [
+          {
+            "CI": "1",
+            "NO_COLOR": "1",
+            "PATH": "/synthetic/bin:/usr/bin:/bin",
+            "HOME": "/Users/synthetic",
+            "USER": "synthetic",
+            "LOGNAME": "synthetic",
+            "SHELL": "/bin/sh",
+            "LANG": "C.UTF-8",
+            "TERM": "dumb"
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.reviewer.reviewOutput": {
+      "header": {
+        "count": 4,
+        "outputs": [
+          {
+            "value": {
+              "verdict": "APPROVE",
+              "findings": [],
+              "checks": [
+                "odczyt diffu"
+              ],
+              "confirmedNoChanges": true
+            }
+          },
+          {
+            "text": "{\"verdict\":\"APPROVE\",\"findings\":[],\"checks\":[\"odczyt diffu\"],\"confirmedNoChanges\":true}"
+          },
+          {
+            "value": {
+              "verdict": "APPROVE",
+              "findings": [],
+              "checks": [
+                "odczyt diffu"
+              ],
+              "confirmedNoChanges": true
+            }
+          },
+          {
+            "$undefined": true
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "claude.reviewer.fallbackReason": {
+      "header": {
+        "count": 5,
+        "outputs": [
+          "CAPACITY_UNAVAILABLE",
+          "MODEL_UNAVAILABLE",
+          "USAGE_LIMIT_EXHAUSTED",
+          {
+            "$undefined": true
+          },
+          {
+            "$undefined": true
+          }
+        ]
+      },
+      "subtrees": {}
+    },
+    "runCodexRound domyślny implementation runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "5440b69f36e3e7b4421849dd04846256e3b9d0dabbf209869cf018d1de00f534"
+        },
+        "outcome": {
+          "sha256": "45ceb455dff9ec6965ea71c160c70ff9ae3d205c343740b243f7f62a5e4cf870"
+        }
+      }
+    },
+    "runCodexRound domyślny implementation runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "16826af843ea5985aaeee12ec59fff685d157a074507a34b382ff60fa6d2634f"
+        },
+        "outcome": {
+          "sha256": "45ceb455dff9ec6965ea71c160c70ff9ae3d205c343740b243f7f62a5e4cf870"
+        }
+      }
+    },
+    "runCodexRound domyślny analysis runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "a66fdb42d9fc9048e5b3b3342dd27a40c1723ccc2320d776c023033187952201"
+        },
+        "outcome": {
+          "sha256": "f62821c3d8555508e09a7bd10ac5a9655b30f5a00f42aa812ffd72772476ba2f"
+        }
+      }
+    },
+    "runCodexRound domyślny analysis runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "20ad9eb026dc3a8226db6922e3c82a292c58ed8ade1575dfa570b9531e9bbc5e"
+        },
+        "outcome": {
+          "sha256": "da34a962857cb4e77c4733f2b229f3f2cf196f9056c26a703e2a4ee3b5e3d0ac"
+        }
+      }
+    },
+    "runCodexRound jawny implementation runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "5440b69f36e3e7b4421849dd04846256e3b9d0dabbf209869cf018d1de00f534"
+        },
+        "outcome": {
+          "sha256": "45ceb455dff9ec6965ea71c160c70ff9ae3d205c343740b243f7f62a5e4cf870"
+        }
+      }
+    },
+    "runCodexRound jawny implementation runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "workspace-write",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "16826af843ea5985aaeee12ec59fff685d157a074507a34b382ff60fa6d2634f"
+        },
+        "outcome": {
+          "sha256": "45ceb455dff9ec6965ea71c160c70ff9ae3d205c343740b243f7f62a5e4cf870"
+        }
+      }
+    },
+    "runCodexRound jawny analysis runda 1": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-1-codex.json",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "a66fdb42d9fc9048e5b3b3342dd27a40c1723ccc2320d776c023033187952201"
+        },
+        "outcome": {
+          "sha256": "f62821c3d8555508e09a7bd10ac5a9655b30f5a00f42aa812ffd72772476ba2f"
+        }
+      }
+    },
+    "runCodexRound jawny analysis runda 2": {
+      "header": {
+        "program": "codex",
+        "args": [
+          "-a",
+          "never",
+          "-s",
+          "read-only",
+          "-m",
+          "gpt-6.1-sol",
+          "-C",
+          "<repo>",
+          "-c",
+          "model_reasoning_effort=\"high\"",
+          "-c",
+          "sandbox_workspace_write.network_access=false",
+          "exec",
+          "resume",
+          "--ignore-user-config",
+          "--strict-config",
+          "--output-schema",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/codex-output-schema.json",
+          "--json",
+          "-o",
+          "<repo>/.agent-review-loop/runs/e5b-base-rounds/round-2-codex.json",
+          "22222222-2222-4222-8222-222222222222",
+          "-"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "20ad9eb026dc3a8226db6922e3c82a292c58ed8ade1575dfa570b9531e9bbc5e"
+        },
+        "outcome": {
+          "sha256": "da34a962857cb4e77c4733f2b229f3f2cf196f9056c26a703e2a4ee3b5e3d0ac"
+        }
+      }
+    },
+    "runClaudeReview 0 domyślny/domyślny": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "955f45e706b630f34cb93722fb6a117c3460b831bee30e062707be93c1cabd42"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 1 claude-fable-5/high": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-fable-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "955f45e706b630f34cb93722fb6a117c3460b831bee30e062707be93c1cabd42"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 2 claude-opus-5/xhigh": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "xhigh",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "fa2d95f35bea5ba189bea41ccc3c3c11694f3489ec030b37311c98c18f1d2d98"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 3 claude-opus-5/xhigh": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "xhigh",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "fa2d95f35bea5ba189bea41ccc3c3c11694f3489ec030b37311c98c18f1d2d98"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 4 claude-opus-5/high": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "high",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "0c6ae139d9c00f9e91f4ded7a132bbd4fd8998cfb3e075156075ff3e0ba05571"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    },
+    "runClaudeReview 5 claude-opus-5/medium": {
+      "header": {
+        "program": "claude",
+        "args": [
+          "-p",
+          "--safe-mode",
+          "--no-session-persistence",
+          "--disable-slash-commands",
+          "--model",
+          "claude-opus-5",
+          "--effort",
+          "medium",
+          "--permission-mode",
+          "dontAsk",
+          "--tools",
+          "Read,Glob,Grep",
+          "--output-format",
+          "json",
+          "--json-schema",
+          "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"v… (992 znaków)"
+        ],
+        "cwd": "<repo>"
+      },
+      "subtrees": {
+        "call": {
+          "sha256": "527c99c9e9954e00c11f7c331dd7b191e217123141d1ec439cbda26fb5295239"
+        },
+        "outcome": {
+          "sha256": "ae4612615c3e50776ab4e7518ea6866e7057f2e40299e01f3095121be699d080"
+        }
+      }
+    }
+  }
+}

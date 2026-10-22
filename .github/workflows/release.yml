@@ -1,0 +1,68 @@
+name: release
+
+# Publishes ringi-gate to npm with provenance, through npm trusted publishing
+# (OIDC from GitHub Actions): no NPM_TOKEN secret. If the first release
+# cannot use trusted publishing, the procedure is described in the release
+# plan, not in this workflow.
+#
+# Requirements: a GitHub environment named `release` in the repository
+# settings, and npm 11.5.1 or newer in the job (trusted publishing does not
+# work with older npm versions).
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # Required reviewers of the release environment approve each run.
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Prepare pnpm in the Corepack cache
+        run: |
+          corepack enable pnpm
+          corepack install -g --cache-only pnpm@11.20.0
+
+      - run: npm ci --ignore-scripts
+
+      - run: npm test
+
+      - name: Check version and private flag
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          node --input-type=module -e '
+            import { readFileSync } from "node:fs";
+            const pkg = JSON.parse(readFileSync("package.json", "utf8"));
+            if (process.env.REF_TYPE !== "tag") {
+              console.error(`Run this workflow on a tag v<version>, not on ${process.env.REF_TYPE} ${process.env.REF_NAME}.`);
+              process.exit(1);
+            }
+            if (process.env.REF_NAME !== `v${pkg.version}`) {
+              console.error(`Tag ${process.env.REF_NAME} does not match package.json version ${pkg.version}.`);
+              process.exit(1);
+            }
+            if (pkg.private !== false) {
+              console.error("package.json must have \"private\": false to publish.");
+              process.exit(1);
+            }
+          '
+
+      - run: npm publish --provenance --access public
