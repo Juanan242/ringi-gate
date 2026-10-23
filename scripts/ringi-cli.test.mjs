@@ -594,6 +594,42 @@ test('ringi doctor: every check ok, then each check fails on its own condition',
         await cleanup(project);
       }
     });
+    await t.test('a missing profile is not reported as committed in JSON or the table; run keeps INVALID_CONFIGURATION', async () => {
+      const { 'ringi.config.mjs': _profile, ...files } = healthyFiles();
+      const project = await createProject({ files });
+      try {
+        const before = git(project, ['status', '--porcelain', '--untracked-files=all']);
+        const { child, result, check } = doctor(project);
+        assert.equal(child.status, 1, child.stderr);
+        assert.equal(result.status, 'fail');
+        assert.equal(check('profile-committed').status, 'warn');
+        assert.match(check('profile-committed').detail, /^not checked: /);
+        assert.match(check('profile-committed').hint, /ringi init/);
+        assert.equal(check('profile').status, 'fail');
+        assert.equal(check('profile').code, 'INVALID_CONFIGURATION');
+        assert.match(check('profile').detail, /not found at the repository root/);
+        assert.match(check('profile').hint, /ringi init/);
+
+        const table = ringi(project, ['doctor'], env());
+        assert.equal(table.status, 1, table.stderr);
+        assert.match(table.stdout, /^warn +profile-committed +not checked: /m);
+        assert.doesNotMatch(table.stdout, /^ok +profile-committed /m);
+        assert.match(table.stdout, /^fail +profile +INVALID_CONFIGURATION: /m);
+
+        for (const options of [[], ['--dry-run']]) {
+          const run = ringi(project, ['run', 'tasks/missing.md', ...options, '--json'], env());
+          assert.equal(run.status, 1, run.stderr);
+          const stopped = JSON.parse(run.stdout);
+          assert.equal(stopped.status, 'STOPPED');
+          assert.equal(stopped.code, 'INVALID_CONFIGURATION');
+          assert.equal(stopped.stage, 'preflight');
+          assert.match(stopped.error, /not found at the repository root\. Run `ringi init`/);
+        }
+        assert.equal(git(project, ['status', '--porcelain', '--untracked-files=all']), before);
+      } finally {
+        await cleanup(project);
+      }
+    });
     // Changed behaviour: profile-committed was a warning after the import;
     // now it fails before it and the profile is not imported.
     await t.test('profile-committed: an uncommitted ringi.config.mjs fails without its import; an uncommitted local module fails profile; exit 1', async () => {

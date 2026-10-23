@@ -60,7 +60,8 @@ const PROFILE_FILE = 'ringi.config.mjs';
 // HEAD:<path> and of its index entry, a regular file without skip-worktree
 // or assume-unchanged (readUncommittedProjectProfileFiles: no git status, no
 // fsmonitor, no filters); otherwise, also when Git cannot be read,
-// PROFILE_UNCOMMITTED.
+// PROFILE_UNCOMMITTED. Returns false when the check is left to the loader
+// because the entry is missing or is not a regular file; true when checked.
 export async function assertProfileCommitted({ runner, root, projectProfile }) {
   const loaded = projectProfile !== undefined;
   const uncommitted = (message, paths) =>
@@ -75,7 +76,7 @@ export async function assertProfileCommitted({ runner, root, projectProfile }) {
   // the load.
   if (!loaded) {
     const metadata = await lstat(join(root, PROFILE_FILE)).catch(() => undefined);
-    if (!metadata?.isFile()) return;
+    if (!metadata?.isFile()) return false;
   }
   let paths;
   try {
@@ -90,7 +91,7 @@ export async function assertProfileCommitted({ runner, root, projectProfile }) {
       [PROFILE_FILE],
     );
   }
-  if (paths.length === 0) return;
+  if (paths.length === 0) return true;
   throw uncommitted(
     `Not committed or different from HEAD (untracked, changed in the working tree or in the index, flagged skip-worktree or assume-unchanged): ${paths.join(', ')}. ringi runs only a committed profile; ${loaded ? 'the modules it imports were loaded, no agent was started.' : `${PROFILE_FILE} was not imported.`}`,
     paths,
@@ -293,6 +294,12 @@ export async function runDoctor({
     ])
       notChecked(id, 'profile-committed');
     return finish(checks);
+  }
+  if (committed.value === false) {
+    const entry = checks.at(-1);
+    entry.status = 'warn';
+    entry.detail = `not checked: ${PROFILE_FILE} is missing or is not a regular file`;
+    entry.hint = `Fix ${PROFILE_FILE} (run ringi init if it is missing); see the profile check.`;
   }
   const loaded = await attempt(
     'profile',
